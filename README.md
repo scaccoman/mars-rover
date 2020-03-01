@@ -27,7 +27,7 @@ This endpoint calculates the position of Mars Rovers. It returns a list of coord
 
 {
   "plateau": {
-    "gridSize": [ 5, 5 ]
+    "gridSize": "5 5"
   },
   "rovers": [
     {
@@ -46,20 +46,17 @@ This endpoint calculates the position of Mars Rovers. It returns a list of coord
 // Example response:
 
 {
-  "rovers": [
-    {
-      "id": "5e02c719-de22-4458-a521-3653b686f550",
-      "movementId": "f8b31b77-71ea-4d20-885f-8d2f06fb6244",
-      "position": "1 3 N"
-      "errors": []
-    },
-    {
-      "id": "b1f2af44-8d80-4031-86d8-f48968e44250",
-      "movementId": "afc151bc-a59b-4780-9770-8d73657609dc",
-      "position": "5 1 E"
-      "errors": []
-    }
-  ]
+    "id": "67531bd0-5bcb-11ea-87f2-1f6031af5bc7",
+    "rovers": [
+        {
+            "roverId": "67531bd1-5bcb-11ea-87f2-1f6031af5bc7",
+            "position": "1 3 N"
+        },
+        {
+            "roverId": "675342e0-5bcb-11ea-87f2-1f6031af5bc7",
+            "position": "5 1 E"
+        }
+    ]
 }
 ```
 

@@ -1,12 +1,46 @@
 'use strict'
 
+const { v1 } = require('uuid')
+const MarsRover = require('../libs/MarsRover')
+const validate = require('../libs/schemas/calculatePosition')
+const responses = require('../libs/responses')
+
 module.exports = async event => {
   try {
+    if (!event || !event.body) {
+      throw new Error('Please provide a payload')
+    }
 
-    console.log('running')
-    return { statusCode: 200, body: 'success' }
+    const data = JSON.parse(event.body)
+    
+    if (!validate.request(data)) {
+      throw new Error(JSON.stringify(validate.request.errors))
+    }
+    
+    const response = {
+      id: v1(),
+      rovers: data.rovers.map(rover => {
+        const instructions = rover.instructions.split('')
+        const marsRover = new MarsRover(rover, data.plateau.gridSize)
+
+        instructions.forEach(instruction => {
+          if (instruction === 'M') return marsRover.move()
+          return marsRover.turn(instruction)
+        })
+
+        return {
+          roverId: marsRover.id,
+          position: marsRover.getPosition()
+        }
+      })
+    }
+    
+    if (!validate.response(response)) {
+      throw new Error(JSON.stringify(validate.response.errors))
+    }
+    
+    return responses.success(response)
   } catch (err) {
-    console.error(err)
-    return { statusCode: 400, body: err.message || err }
+    return responses.error(err)
   }
 }
