@@ -34,7 +34,7 @@ module.exports = async event => {
         }
       })
     }
-    console.log('response= ', response)
+    
     if (!validate.response(response)) {
       throw new Error(JSON.stringify(validate.response.errors))
     }
