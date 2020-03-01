@@ -1,5 +1,6 @@
 'use strict'
 
+const validate = require('../libs/schemas/calculatePosition')
 const responses = require('../libs/responses')
 
 module.exports = async event => {
@@ -9,11 +10,15 @@ module.exports = async event => {
     }
 
     const data = JSON.parse(event.body)
+    
+    if (!validate.request(data)) {
+      throw new Error(JSON.stringify(validate.request.errors))
+    }
+
     console.log('data= ', data)
     console.log('running')
     return responses.success('success')
   } catch (err) {
-    console.error(err)
     return responses.error(err)
   }
 }

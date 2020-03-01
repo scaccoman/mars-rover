@@ -31,7 +31,6 @@ module.exports = {
    * @returns obj
    */
   error: err => {
-
     err = err || null;
 
     console.error(err);
