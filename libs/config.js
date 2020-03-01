@@ -6,7 +6,6 @@ module.exports.config = () => {
 
   return {
     'api': 'APIMarsRover',
-    'stage': stage,
-    'schema': 'Contact'
+    'stage': stage
   }
 }
