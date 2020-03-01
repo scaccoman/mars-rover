@@ -1,6 +1,6 @@
 'use strict'
 
-const uuid = require('uuid/v1')
+const { v1 } = require('uuid')
 const CARDINALS = {
   EAST: 'E',
   NORTH: 'N',
@@ -10,11 +10,11 @@ const CARDINALS = {
 
 module.exports = class MarsRover {  
   constructor(rover, grid) {
-    this.id = uuid()
+    this.id = v1()
     this.grid = grid.split(' ')
     const [x, y, direction] = rover.position.split(' ')
-    this.x = x
-    this.y = y
+    this.x = Number(x)
+    this.y = Number(y)
     this.direction = direction
   }
 
@@ -52,7 +52,7 @@ module.exports = class MarsRover {
         break
     }
 
-    if ((this.y < 0 && this.y > this.grid[1]) || (this.x < 0 && this.x > this.grid[0])) {
+    if (this.y < 0 || this.y > this.grid[1] || this.x < 0 || this.x > this.grid[0]) {
       throw new Error('Move instruction out of area boundary')
     }
   }
