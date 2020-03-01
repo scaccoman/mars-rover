@@ -1,18 +1,10 @@
-'use strict';
+'use strict'
 
 module.exports = {
-
-  /**
-   * Respond with a 200 success code and message.
-   *
-   * @param data
-   * @param code
-   * @returns
-   */
   success: (data, code) => {
 
     if (!data) {
-      throw new Error('I do not have data to return, please supply');
+      throw new Error('I do not have data to return, please supply')
     }
 
     return {
@@ -24,16 +16,10 @@ module.exports = {
     }
   },
 
-  /**
-   * Response with a generic 400 code or a passed in statusCode.
-   *
-   * @param err
-   * @returns obj
-   */
   error: err => {
-    err = err || null;
+    err = err || null
 
-    console.error(err);
+    console.error(err)
 
     return {
       statusCode: err && err.statusCode ? err.statusCode : 400,
@@ -44,6 +30,6 @@ module.exports = {
         'message': err && err.message ? err.message : err,
         'errors': err && err.errors ? err.errors : null
       })
-    };
+    }
   }
-};
+}
