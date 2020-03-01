@@ -19,7 +19,6 @@ custom:
       SLS_BUCKET: ${env:PROD_SLS_BUCKET}
 
 plugins:
-  - serverless-pseudo-parameters
   - serverless-offline
 
 package:

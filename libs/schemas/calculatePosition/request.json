@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "calculatePosition",
+  "description": "Payload to calculate the position of Mars Rovers",
+  "required": ["plateau", "rovers"],
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "plateau": {
+      "type": "object",
+      "required": [ "gridSize" ],
+      "additionalProperties": false,
+      "properties": {
+        "gridSize": {
+          "type": "string",
+          "pattern": "^\\d+\\s\\d+$"
+        }
+      }
+    },
+    "rovers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [ "position", "instructions" ],
+        "additionalProperties": false,
+        "properties": {
+          "position": {
+            "type": "string",
+            "pattern": "^\\d+\\s\\d+\\s[NESW]$"
+          },
+          "instructions": {
+            "type": "string",
+            "pattern": "^[MLR]*$",
+            "maxLength": 1000
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "rovers": [
+    {
+      "position": "1 2 N",
+      "instructions": "LM"
+    },
+    { 
+      "position": "3 3 E",
+      "instructions": "MR"
+    }
+  ]
+}

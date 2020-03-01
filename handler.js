@@ -1,3 +1,3 @@
-'use strict';
+'use strict'
 
-module.exports.calculatePosition = require('./handlers/calculate-position');
+module.exports.calculatePosition = require('./handlers/calculatePosition')
