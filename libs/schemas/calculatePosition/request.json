@@ -13,7 +13,7 @@
       "properties": {
         "gridSize": {
           "type": "string",
-          "pattern": "^[0-9]* [0-9]*$"
+          "pattern": "^\\d+\\s\\d+$"
         }
       }
     },
@@ -26,11 +26,11 @@
         "properties": {
           "position": {
             "type": "string",
-            "pattern": "^[0-9]* [0-9]* [NESW]$"
+            "pattern": "^\\d+\\s\\d+\\s[NESW]$"
           },
           "instructions": {
             "type": "string",
-            "pattern": "^([MLR]*)$",
+            "pattern": "^[MLR]*$",
             "maxLength": 1000
           }
         }
