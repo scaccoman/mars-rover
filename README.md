@@ -83,15 +83,3 @@ npm run test
 
 The 'npm run test' command will run all unit tests within the spec/unit folder showing which tests passed or failed.
 This command will not display the coverage percentage
-
-```
-npm run cover
-```
-
-The 'npm run cover' command will run all unit tests within the spec/unit folder and display the coverage percentage.
-
-```
-npm run unit-test-coverage
-```
-
-The 'npm run unit-test-coverage' command will run all unit tests within the spec/unit folder, displaying which tests passed/failed and the total coverage. Additionally, an error will be thrown if the threshold coverage is not met for any tests. The threshold can be changed within the package.json file on the 'check-coverage' command.
