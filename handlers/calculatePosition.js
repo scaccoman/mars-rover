@@ -1,5 +1,6 @@
 'use strict'
 
+const uuid = require('uuid/v1')
 const MarsRover = require('../libs/MarsRover')
 const validate = require('../libs/schemas/calculatePosition')
 const responses = require('../libs/responses')
@@ -16,24 +17,29 @@ module.exports = async event => {
       throw new Error(JSON.stringify(validate.request.errors))
     }
 
-    const rovers = data.rovers.map(rover => {
-      
-      const instructions = rover.instructions.split('')
-      const marsRover = new MarsRover(rover, data.plateau.gridSize)
+    const response = {
+      id: uuid(),
+      rovers: data.rovers.map(rover => {
+        const instructions = rover.instructions.split('')
+        const marsRover = new MarsRover(rover, data.plateau.gridSize)
 
-      instructions.forEach(instruction => {
-        if (instruction === 'M') return marsRover.move()
-        return marsRover.setDirection(instruction)
+        instructions.forEach(instruction => {
+          if (instruction === 'M') return marsRover.move()
+          return marsRover.turn(instruction)
+        })
+
+        return {
+          roverId: marsRover.id,
+          position: marsRover.getPosition()
+        }
       })
+    }
 
-      return {
-        id: marsRover.id,
-        position: marsRover.getPosition(),
-        timestamp: new Date().getTime()
-      }
-    })
+    if (!validate.response(response)) {
+      throw new Error(JSON.stringify(validate.response.errors))
+    }
     
-    return responses.success({ rovers })
+    return responses.success(response)
   } catch (err) {
     return responses.error(err)
   }

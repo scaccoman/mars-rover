@@ -5,7 +5,7 @@ module.exports.config = () => {
   const stage = process.env.NODE_ENV || 'dev';
 
   return {
-    'api': 'APIContact',
+    'api': 'APIMarsRover',
     'stage': stage,
     'schema': 'Contact'
   };

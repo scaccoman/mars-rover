@@ -1,3 +1,5 @@
+'use strict'
+
 const uuid = require('uuid/v1')
 const CARDINALS = {
   EAST: 'E',
@@ -16,7 +18,7 @@ module.exports = class MarsRover {
     this.direction = direction
   }
 
-  setDirection(instruction) {
+  turn(instruction) {
     const isLeft = instruction === 'L'
     switch(this.direction) {
       case 'N':
