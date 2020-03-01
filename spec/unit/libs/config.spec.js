@@ -1,28 +1,28 @@
-'use strict';
+'use strict'
 
-jasmine.getEnv().addReporter(require(process.cwd() + '/spec/support/reporter'));
+jasmine.getEnv().addReporter(require(process.cwd() + '/spec/support/reporter'))
 
-const expect = require('chai').expect;
+const expect = require('chai').expect
 
 describe('Config', function () {
   it('Config Dev properties', done => {
-    process.env.NODE_ENV = 'dev';
-    const config = require('../../../libs/config').config();
-    expect(config.stage).to.equal('dev');
-    done();
-  });
+    process.env.NODE_ENV = 'dev'
+    const config = require('../../../libs/config').config()
+    expect(config.stage).to.equal('dev')
+    done()
+  })
 
   it('Config Prod properties', done => {
-    process.env.NODE_ENV = 'prod';
-    const config = require('../../../libs/config').config();
-    expect(config.stage).to.equal('prod');
-    done();
-  });
+    process.env.NODE_ENV = 'prod'
+    const config = require('../../../libs/config').config()
+    expect(config.stage).to.equal('prod')
+    done()
+  })
 
   it('Config default properties', done => {
-    delete process.env.NODE_ENV;
-    const config = require('../../../libs/config').config();
-    expect(config.stage).to.equal('dev');
-    done();
-  });
-});
+    delete process.env.NODE_ENV
+    const config = require('../../../libs/config').config()
+    expect(config.stage).to.equal('dev')
+    done()
+  })
+})

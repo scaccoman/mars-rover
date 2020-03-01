@@ -19,8 +19,8 @@ describe('Mars Rover', function () {
     expect(marsRover.direction).to.equal('N')
     expect(marsRover.grid[0]).to.equal('5')
     expect(marsRover.grid[1]).to.equal('5')
-    done();
-  });
+    done()
+  })
 
   it('turning should work', async done => {
     marsRover.turn('L')
@@ -34,16 +34,16 @@ describe('Mars Rover', function () {
     expect(marsRover.x).to.equal(1)
     expect(marsRover.y).to.equal(2)
     expect(marsRover.direction).to.equal('N')
-    done();
-  });
+    done()
+  })
 
   it('moving should work', async done => {
     marsRover.move()
     expect(marsRover.x).to.equal(1)
     expect(marsRover.y).to.equal(3)
     expect(marsRover.direction).to.equal('N')
-    done();
-  });
+    done()
+  })
 
   it('moving should work', async done => {
     marsRover.move()
@@ -57,12 +57,12 @@ describe('Mars Rover', function () {
     expect(marsRover.x).to.equal(1)
     expect(marsRover.y).to.equal(6)
     expect(marsRover.direction).to.equal('N')
-    done();
-  });
+    done()
+  })
 
   it('getPosition should work', async done => {
     const position = marsRover.getPosition()
     expect(position).to.equal('1 2 N')
-    done();
-  });
-});
+    done()
+  })
+})

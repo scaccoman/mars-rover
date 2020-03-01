@@ -13,7 +13,7 @@ describe('Calculate Position', function () {
   let valid, invalid
 
   beforeEach(() => {
-    process.env.NODE_ENV = 'dev';
+    process.env.NODE_ENV = 'dev'
     valid = require('../../mocks/calculatePosition/valid')
     invalid = require('../../mocks/calculatePosition/invalid')
   })
@@ -38,8 +38,8 @@ describe('Calculate Position', function () {
     expect(turn.calledTwice).to.equal(true)
     expect(move.calledTwice).to.equal(true)
     expect(getPosition.calledTwice).to.equal(true)
-    done();
-  });
+    done()
+  })
 
   it('throw error if no payload is provided', async done => {
     const turn = sinon.stub().returns(true)
@@ -61,8 +61,8 @@ describe('Calculate Position', function () {
     expect(turn.called).to.equal(false)
     expect(move.called).to.equal(false)
     expect(getPosition.called).to.equal(false)
-    done();
-  });
+    done()
+  })
 
   it('the payload validation should fail', async done => {
     const turn = sinon.stub().returns(true)
@@ -84,6 +84,6 @@ describe('Calculate Position', function () {
     expect(turn.called).to.equal(false)
     expect(move.called).to.equal(false)
     expect(getPosition.called).to.equal(false)
-    done();
-  });
-});
+    done()
+  })
+})

@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-const expect = require('chai').expect;
+const expect = require('chai').expect
 
-jasmine.getEnv().addReporter(require(process.cwd() + '/spec/support/reporter'));
+jasmine.getEnv().addReporter(require(process.cwd() + '/spec/support/reporter'))
 
-const handler = require(process.cwd() + '/handler');
+const handler = require(process.cwd() + '/handler')
 
 describe('Handler', () => {
 
   it ('Handler definitions', () => {
-    expect(handler).to.have.property('calculatePosition');
-  });
-});
+    expect(handler).to.have.property('calculatePosition')
+  })
+})
