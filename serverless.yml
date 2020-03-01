@@ -1,0 +1,35 @@
+service: APIMarsRover
+frameworkVersion: '>=1.2.1 <2.0.0'
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-1
+  versionFunctions: false
+  stage: ${opt:stage, self:custom.defaultStage}
+  deploymentBucket: ${self:custom.env.${opt:stage}.SLS_BUCKET}
+  environment:
+    NODE_ENV: ${opt:stage}
+
+custom:
+  defaultStage: dev
+  env:
+    dev:
+      SLS_BUCKET: ${env:DEV_SLS_BUCKET}
+    prod:
+      SLS_BUCKET: ${env:PROD_SLS_BUCKET}
+
+plugins:
+  - serverless-pseudo-parameters
+  - serverless-offline
+
+package:
+  individually: true
+
+functions:
+  calculatePosition:
+    handler: handler.calculatePosition
+    events:
+      - http:
+          path: /calculate-position
+          method: post
+          cors: true

@@ -1,0 +1,92 @@
+{
+  "name": "mars-rover",
+  "title": "Mars Rover API",
+  "version": "1.0.0",
+  "description": "Calculate the position of Mars Rovers",
+  "main": "handler.js",
+  "license": "MIT",
+  "scripts": {
+    "check-coverage": "istanbul check-coverage ./coverage/coverage.raw.json",
+    "coverage": "nyc npm run test",
+    "unit-test-coverage": "npm run cover && npm run check-coverage",
+    "dev": "sls offline start --stage dev --noAuth",
+    "deploy": "serverless deploy --stage $NODE_ENV -v",
+    "test": "jasmine JASMINE_CONFIG_PATH=spec/support/unit.conf.json"
+  },
+  "pre-push": {
+    "run": [
+      "coverage"
+    ]
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": false,
+    "check-coverage": true,
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "exclude": [
+      "coverage/**",
+      "packages/*/test/**",
+      "test/**",
+      "test{,-*}.js",
+      "**/*{.,-}test.js",
+      "**/__tests__/**",
+      "**/node_modules/**",
+      "**/spec/**"
+    ],
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100,
+    "watermarks": {
+      "lines": [
+        80,
+        95
+      ],
+      "functions": [
+        80,
+        95
+      ],
+      "branches": [
+        80,
+        95
+      ],
+      "statements": [
+        80,
+        95
+      ]
+    }
+  },
+  "dependencies": {
+    "serverless": "^1.65.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.630.0",
+    "chai": "^4.2.0",
+    "jasmine": "^3.4.0",
+    "jasmine-spec-reporter": "^4.0.0",
+    "nyc": "^14.1.1",
+    "pre-push": "^0.1.1",
+    "proxyquire": "^2.0.1",
+    "serverless-offline": "^5.12.1",
+    "serverless-pseudo-parameters": "^2.4.0",
+    "sinon": "^7.3.2"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect",
+      "jasmine",
+      "fit",
+      "fdescribe"
+    ]
+  }
+}
