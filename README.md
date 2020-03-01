@@ -27,7 +27,7 @@ This endpoint calculates the position of Mars Rovers. It returns a list of coord
 
 {
   "plateau": {
-    "gridSize": [ 5, 5 ]
+    "gridSize": "5 5"
   },
   "rovers": [
     {
