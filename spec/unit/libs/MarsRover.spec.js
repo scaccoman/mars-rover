@@ -45,7 +45,7 @@ describe('Mars Rover', function () {
     done()
   })
 
-  it('moving should work', async done => {
+  it('moving out of boundary should throw an error', async done => {
     marsRover.move()
     marsRover.move()
     marsRover.move()
